@@ -43,7 +43,7 @@ class _Test extends TestCase {
   }
 
   function testMap() : void {
-    this.expect(this.equals({"a":"b"}, {"a":"b"})).toBe(true);
+    this.expect({"a":"b"}).toEqual({"a":"b"});
   }
 
   function testPass() : void {
@@ -62,5 +62,13 @@ class _Test extends TestCase {
 
   override function tearDown() : void {
     log "TEAR DOWN call after test" + this._currentName;
+  }
+
+  override function setUp(async:AsyncContext) : void {
+    log "SET UP call before test async : " + async.name();
+  }
+
+  override function tearDown(async:AsyncContext) : void {
+    log "TEAR DOWN call after test async : " + async.name();
   }
 }
